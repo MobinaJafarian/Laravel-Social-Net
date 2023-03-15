@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FeedController extends Controller
 {
@@ -22,10 +23,12 @@ class FeedController extends Controller
             'image' => 'required |max:10000',
             // 'image' => 'required |max:10000',
         ]);
+        $image = $request->file('image')->store('images');
         $feed = new Feed();
-        $feed->image  = $request->file('image')->store('images');
+        $feed->image_url  = Storage::url($image);
         $feed->description  = $request->description;
-        $feed->save() ? back() : "Error";
+        $feed->publisher_id  = auth()->id();
+        // $feed->save() ? back() : "Error";
         if($feed->save()){
             return back();
         }else{
