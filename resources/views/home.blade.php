@@ -20,11 +20,11 @@
       <div class="modal-body">
         @csrf
         <div class="form-group">
-            <img src="" alt="">
+            <img src="" alt="" id="image_cast">
         </div>
         <div class="form-group">
             <label for="image">Image :</label>
-            <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
+            <input type="file" class="form-control-file" name="image" id="image" accept="image/*" onchange="showImage(this)">
         @error('image')
             <div class="text-danger">
                 {{$message}}
@@ -74,4 +74,19 @@
 
     </div>
 </div>
+@endsection
+@section('javascript')
+    <script>
+        function showImage(image){
+            if (image.files && image.files[0]){
+                let fileReader = new fileReader();
+                fileReader.onload = function(e){
+                    $('#image_cast')
+                        .attr('src' , e.target.result)
+                        .height(262);      
+                };
+                fileReader.readAsDataURL(image.files[0]);
+            }
+        }
+    </script>
 @endsection
