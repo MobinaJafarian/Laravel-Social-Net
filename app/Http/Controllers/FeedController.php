@@ -56,13 +56,13 @@ class FeedController extends Controller
         return back();
     }
 
-    public function check_user_if_liked($feed , $user)
-    {
-        return empty(Like::where([
-            'feed_id' => $feed->id,
-            'user_id' => $user
-        ])->first()) ? false : true;
-    }
+    // public function check_user_if_liked($feed , $user)
+    // {
+    //     return empty(Like::where([
+    //         'feed_id' => $feed->id,
+    //         'user_id' => $user
+    //     ])->first()) ? false : true;
+    // }
 
     public function index()
     {
