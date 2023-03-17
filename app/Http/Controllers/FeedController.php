@@ -40,7 +40,7 @@ class FeedController extends Controller
 
     public function like_feed(Request $request , Feed $feed)
     {
-        if($this->check_user_if_liked($feed , auth()->id())){
+        if(check_user_if_liked($feed , auth()->id())){
             Like::where([
                 'feed_id' => $feed->id,
                 'user_id' => auth()->id()
@@ -56,64 +56,4 @@ class FeedController extends Controller
         return back();
     }
 
-    // public function check_user_if_liked($feed , $user)
-    // {
-    //     return empty(Like::where([
-    //         'feed_id' => $feed->id,
-    //         'user_id' => $user
-    //     ])->first()) ? false : true;
-    // }
-
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Feed $feed)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Feed $feed)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Feed $feed)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Feed $feed)
-    {
-        //
-    }
 }
