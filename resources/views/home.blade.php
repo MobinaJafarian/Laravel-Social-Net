@@ -61,9 +61,12 @@
                         <div class="col-md-6">
                             <div class="float-right">
                                 <span>200 <i class="fas fa-eye fa-1x"></i></span>
+                                <form action="{{ route('like_feed' , [$feed])}}" method="post">
+                                @csrf
                                 <button class="bg-transparent border-0">
                                     <i class="fas fa-heart fa-2x text-danger"></i>
                                 </button>
+                            </form>
                             </div>
                         </div>
                     </div>
