@@ -24,3 +24,4 @@ Route::get('/' , [HomeController::class , 'mainPage']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/submit_feed' ,[FeedController::class  ,'submit_feed'] )->name('submit_feed');
+Route::post('/like_feed' , [FeedController::class , 'like_feed'])->name('like_feed');
