@@ -64,7 +64,8 @@
                                 <form action="{{ route('like_feed' , [$feed])}}" method="post">
                                 @csrf
                                 <button class="bg-transparent border-0">
-                                    <i class="fas fa-heart fa-2x text-danger"></i>
+                                    <i class="fas fa-heart fa-2x @if(check_user_if_liked($feed , auth()->user()->id)) text-danger" @endif></i>
+                                <span class="font_weight_bold">{{ $feed->likes_count }}</span>
                                 </button>
                             </form>
                             </div>
