@@ -56,16 +56,16 @@
                     </p>
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <span class="float-left"> published by {{ $feed->publisher->name}}</span>
+                            <span class="float-left"> published by <a href="{{route('profile_page' , $feed->publisher->id)}}">{{ $feed->publisher->name}}</a></span>
                         </div>
                         <div class="col-md-6">
                             <div class="float-right">
-                                <span>200 <i class="fas fa-eye fa-1x"></i></span>
+                                <span>200 <i class="fas fa-eye fa-2x"></i></span>
                                 <form action="{{ route('like_feed' , [$feed])}}" method="post">
                                 @csrf
                                 <button class="bg-transparent border-0">
-                                    <i class="fas fa-heart fa-2x @if(check_user_if_liked($feed , auth()->user()->id)) text-danger" @endif></i>
-                                <span class="font_weight_bold">{{ $feed->likes_count }}</span>
+                                    <span class="font_weight_bold">{{ $feed->likes_count }}</span>
+                                    <i class="fas fa-heart fa-2x @if(check_user_if_liked($feed , auth()->user()->id)) text-danger @endif"></i>
                                 </button>
                             </form>
                             </div>
