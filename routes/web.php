@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/submit_feed' ,[FeedController::class  ,'submit_feed'] )->name('submit_feed');
 Route::post('/like_feed' , [FeedController::class , 'like_feed'])->name('like_feed');
+
+Route::get('/user/{user}' , [ProfileController::class , 'index'])->name('profile_page');
