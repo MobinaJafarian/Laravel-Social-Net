@@ -22,7 +22,6 @@ class FeedController extends Controller
     {
         $this->validate($request , [
             'image' => 'required |max:10000',
-            // 'image' => 'required |max:10000',
         ]);
         $image = $request->file('image')->store('images');
         $feed = new Feed();
