@@ -42,8 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['followers_count' , 'following_count'];
+
     public function feeds()
     {
         return $this->hasMany(Feed::class);
+    }
+
+    public function getFollowersCountAttribute()
+    {
+        return Follow::where(['follower_id' , $this->id])->count();
+    }
+
+    public function getFollowingCountAttribute()
+    {
+        return Follow::where(['following_id' , $this->id])->count();
     }
 }
