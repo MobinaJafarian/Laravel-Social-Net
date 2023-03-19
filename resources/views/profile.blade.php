@@ -9,10 +9,19 @@
                        <img src="@if (!empty($user->profile_image)) {{$user->profile_image}} @else {{asset('images/user-profile-avatar.jpg')}} @endif" alt="{{$user->name}}" class="rounded-circle justify-center" style="width:200px;height:200px;">
                        <h3 class="text-center mt-3">{{ $user->name }}</h3>
                        <div class="row text-center justify-content-center mt-3 mb-3">
-                        <strong>Followers : 1200</strong>
-                        <strong>Following : 120</strong>
+                        <strong>Followers : {{ $user->followers_count}}</strong>
+                        <strong>Following : {{ $user->following_count}}</strong>
                        </div>
-                       <button class="btn btn-primary rounded shadow pl-5 pr-5">Follow</button>
+                       @if($user->id != auth()->user()->id)
+                        <form action="{{route('follow_user' , [$user->id])}}" method="post">
+                            @csrf
+                            @if(check_user_if_followed(auth()->user()->id , $user->id))
+                                <button type="submit" class="btn btn-primary rounded shadow pl-5 pr-5">Follow</button>
+                            @else
+                                <button type="submit" class="btn btn-warning rounded shadow pl-5 pr-5">UnFollow</button>
+                            @endif 
+                        </form>
+                       @endif
                     </div>
                 </div>
             </div>
