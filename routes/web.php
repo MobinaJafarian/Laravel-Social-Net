@@ -28,3 +28,4 @@ Route::post('/submit_feed' ,[FeedController::class  ,'submit_feed'] )->name('sub
 Route::post('/like_feed' , [FeedController::class , 'like_feed'])->name('like_feed');
 
 Route::get('/user/{user}' , [ProfileController::class , 'index'])->name('profile_page');
+Route::post('/user/{user}/follow' , [ProfileController::class , 'follow'])->name('follow_user');
